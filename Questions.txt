@@ -381,3 +381,60 @@ Q) Given:
   C) public String getValue() {return "Hello";}
   D) public String getValue(int x) {return "Hello";}
   E) None of these
+
+Q) Given:
+ class Q25Base {
+   int x = 99;
+   { System.out.println("x is " + x); }
+ }
+ class Q25Sub extends Q25Base {
+   Q25Sub(int x) { System.out.println("in constructor, x is " + x); }
+   public static void go() { new Q25Sub(1); }
+ }
+Given a call to go(), what is the result?
+A) in constructor, x is 1
+   x is 99
+B) x is 99
+   in constructor, x is 1
+C) x is 99
+   in constructor, x is 99
+D) Compilation fails
+
+Q) Given:
+ class Q25Base {
+   int x = 99;
+   { System.out.println("x is " + x); }
+   Q25Base(int x) {}
+ }
+ class Q25Sub extends Q25Base {
+   int y = 99;
+   Q25Sub(int x) { System.out.println("in constructor, x is " + x); }
+   public static void go() { new Q25Sub(1); }
+ }
+Given a call to go(), what is the result?
+A) in constructor, x is 1
+   x is 99
+B) x is 99
+   in constructor, x is 1
+C) x is 99
+   in constructor, x is 99
+D) Compilation fails
+
+Q) Given:
+ class Q25Base {
+   int x = 99; { System.out.println("x is " + x); }
+   Q25Base() {} Q25Base(int x) {}
+ }
+ class Q25Sub extends Q25Base {
+   int y = 99;
+   Q25Sub(int x) { super(y+1);
+    System.out.println("in constructor, x is " + x); }
+ }
+Given a call to new Q25Sub(1), what is the result?
+A) in constructor, x is 1
+   x is 99
+B) x is 99
+   in constructor, x is 1
+C) x is 99
+   in constructor, x is 99
+D) Compilation fails
