@@ -314,3 +314,70 @@ B) new Outer.Inner();
 C) Outer ou = new Outer(); new ou.Inner();
 D) new Outer().new Inner();
 E) new Outer() { new Inner(); }
+
+Q) Which is true?
+A) A static method cannot access an instance field
+B) An instance method cannot access a static field
+C) Instance methods can access both instance and static fields
+D) Static methods can access both instance and static fields
+
+Q) Given:
+ class Base {
+   void doBaseStuff() {
+     System.out.println("doBaseStuff");
+   }
+ }
+ class Sub extends Base {
+   void doBaseStuff() { System.out.println("doSubStuff"); }
+   void doOtherStuff() { System.out.println("doOtherStuff"); }
+ }
+ In the Base and Sub classes, which are true in isolation?
+ A) doBaseStuff in Base can be marked public without causing errors
+ B) doBaseStuff in Base can be marked private without causing errors
+ C) doBaseStuff in Sub can be marked public without causing errors
+ D) doBaseStuff in Sub can be marked protected without causing errors
+ E) doBaseStuff in Sub can be marked private without causing errors
+
+Q) Given:
+  class Base {
+    void doBaseStuff() { System.out.println("doBaseStuff"); }
+  }
+  class Sub extends Base {
+    void doBaseStuff() { System.out.println("doSubStuff"); }
+  }
+
+In the Base and Sub classes, which are true in isolation?
+A) doBaseStuff in Base can be marked throws Exception without causing errors
+B) doBaseStuff in Base can be marked throws RuntimeException without causing errors
+C) doBaseStuff in Sub can be marked throws Exception without causing errors
+D) doBaseStuff in Sub can be marked throws RuntimeException without causing errors
+E) if doBaseStuff in Base were marked throws Exception,
+   then doBaseStuff in Sub can be marked throws IOException without causing errors
+
+Q) Given:
+  class Q24Base {
+    public int get() {
+      return 0;
+    }
+  }
+
+and:
+  class Q24Sub extends Q24Base {}
+
+Which methods may individually be added to this class?
+A) public long get() { return 1; }
+B) public short get() { return 1; }
+C) public Q24Base get() { return null; }
+D) None of these
+
+Q) Given:
+  public CharSequence getValue() {
+    return "";
+  }
+
+  Which of these methods may individually be added to a subclass of this class?
+  A) public int getValue(int x) {return 1;}
+  B) public CharSequence getValue() {return "Hello";}
+  C) public String getValue() {return "Hello";}
+  D) public String getValue(int x) {return "Hello";}
+  E) None of these
