@@ -244,3 +244,73 @@ B) RuntimeException
 C) IntA.doStuff()
 D) IntB.doStuff()
 E) ClA.doStuff()
+
+Q) Given:
+interface IntA {
+ default void doStuff() {  System.out.println("IntA.doStuff()"); }
+}
+interface IntB {
+ default void doStuff() { System.out.println("IntB.doStuff()"); }
+}
+class ClA implements IntA, IntB {
+}
+What is the result of a call:
+public class Q3 {
+ public static void main(String[] args) { new ClA().doStuff(); }
+}
+A) Compilation fails
+B) RuntimeException
+C) IntA.doStuff()
+D) IntB.doStuff()
+E) IntA.doStuff()
+   IntB.doStuff()
+
+Q) Given:
+interface IntA {
+ default void doStuff() {  System.out.println("IntA.doStuff()"); }
+}
+interface IntB {
+ default void doStuff() { System.out.println("IntB.doStuff()"); }
+}
+class ClA implements IntA, IntB {
+ public void doStuff() { /* point a */ }
+}
+and a call: new ClA().doStuff();
+What should be added at point a to cause the output "IntB.doStuff()"?
+A) Nothing more is needed
+B) This cannot be achieved
+C) super.doStuff()
+D) IntB.doStuff()
+E) IntB.super.doStuff()
+
+Q)
+public class AnonymousQ1 {
+  public void doStuff() {
+   int len = 3;
+   Predicate<String> ps = new Predicate<String>() {
+     @Override
+     public boolean test(String s) {
+       return s.length() > len; // line n1
+     }
+   };
+   // line n2
+ }
+}
+Which are true?
+A) The code compiles
+B) Compilation fails due to a problem at line n1
+C) adding the code
+     System.out.println("testing lines " + (++len));
+   at line n2 is OK
+
+Q)
+class Outer {
+ class Inner{
+ }
+}
+Which create an instance of Inner?
+A) new Inner();
+B) new Outer.Inner();
+C) Outer ou = new Outer(); new ou.Inner();
+D) new Outer().new Inner();
+E) new Outer() { new Inner(); }
