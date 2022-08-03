@@ -162,3 +162,85 @@ Given all five methods exist, which is invoked by this invocation?
 
        doStuff(1, 2);
 
+Q) Given:
+void doStuff(int x, long y) {}        // Method B
+void doStuff(long x, int y) {}        // Method C
+void doStuff(int ... x) {}            // Method D
+void doStuff(Integer x, Integer y) {} // Method E
+
+What is the result of this invocation?
+
+       doStuff(1, 2);
+
+A) Compilation fails
+
+Q) Given:
+void doStuff(int ... x) {}            // Method D
+void doStuff(Integer x, Integer y) {} // Method E
+
+What is the result of this invocation?
+
+       doStuff(1, 2);
+
+A) Compilation fails
+B) runtime exception
+C) none :)
+
+Q) Given:
+interface Int1 {
+ default void doStuff() {
+   System.out.println("Int1.doStuff()");
+ }
+}
+class Cl1 implements Int1 {
+ void doStuff() {
+   System.out.println("Cl1.doStuff");
+ }
+}
+What is the result of a call:
+new Cl1().doStuff();
+
+A) Compilation fails
+B) RuntimeException
+C) Int1.doStuff()
+D) Cl1.doStuff()
+E) Int1.doStuff()
+   Cl1.doStuff()
+
+Q) Given:
+interface Int1 {
+ default void doStuff() { System.out.println("Int1.doStuff()"); }
+}
+class Cl2 implements Int1 {
+ public void doStuff() { System.out.println("Cl2.doStuff"); }
+}
+What is the result of a call:
+public class Q2 {
+ public static void main(String[] args) { new Cl2().doStuff(); }
+}
+A) Compilation fails
+B) RuntimeException
+C) Int1.doStuff()
+D) Cl2.doStuff()
+E) Int1.doStuff()
+   Cl2.doStuff()
+
+Q) Given:
+interface IntA {
+ default void doStuff() {  System.out.println("IntA.doStuff()"); }
+}
+interface IntB {
+ default void doStuff() { System.out.println("IntB.doStuff()"); }
+}
+class ClA implements IntA, IntB {
+ public void doStuff() { System.out.println("ClA.doStuff"); }
+}
+What is the result of a call:
+public class Q3 {
+ public static void main(String[] args) { new ClA().doStuff(); }
+}
+A) Compilation fails
+B) RuntimeException
+C) IntA.doStuff()
+D) IntB.doStuff()
+E) ClA.doStuff()
