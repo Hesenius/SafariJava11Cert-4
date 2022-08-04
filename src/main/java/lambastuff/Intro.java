@@ -1,9 +1,11 @@
 package lambastuff;
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 
 interface Selector {
@@ -26,6 +28,9 @@ class ShortString implements Selector {
 
 public class Intro {
 
+  public static Predicate<String> getPS() {
+    return s -> s.length() > 3;
+  }
   public static List<String> getBySelector(List<String> in, Selector sel) {
     List<String> results = new ArrayList<>();
     for (String s : in) {
@@ -77,5 +82,7 @@ public class Intro {
 //      return s.length() > 3;
 //    } ;
     ss = s -> s.length() > 3  ;
+    Object objss = (Selector)(s -> s.length() > 3)  ;
+//    Object objss = (Selector & Serializable)(s -> s.length() > 3)  ;
   }
 }

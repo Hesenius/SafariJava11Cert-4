@@ -515,3 +515,43 @@ B) BiPredicate<String> f =
 C) Comparator<String> f =
 D) Supplier<String, Integer> f =
 E) BinaryOperator<String> f =
+
+Q) Given:
+StringBuilder sb1 = new StringBuilder("Hello");
+StringBuilder sb2 = sb1;
+sb1 = null;
+// line n1
+
+Which is true at line n1?
+A) sb1 is unreferenced and eligible for GC
+B) sb1 and sb2 are unreferenced and eligible for GC
+C) No objects are eligible for GC
+
+Q) Given:
+
+StringBuilder sb1 = new StringBuilder("Hello");
+StringBuilder sb2 = new StringBuilder("World");
+sb1 = null;
+sb2 = sb1;
+// line n1
+
+Which is true at line n1?
+A) Object containing "Hello" is unreferenced and eligible for GC
+B) Object containing "World" is unreferenced and eligible for GC
+C) No objects are eligible for GC
+
+Q) Given:
+ String doStuff(String s) {
+   s = new String("Hello");
+   return new String(s);
+ }
+and:
+ public static void main(String[] args) {
+   String y = doStuff("Hello");
+   // line n1
+ }
+how many String objects are eligible for GC at line n1
+A) 0
+B) 1
+C) 2
+D) 3
