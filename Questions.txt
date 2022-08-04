@@ -555,3 +555,40 @@ A) 0
 B) 1
 C) 2
 D) 3
+
+Q) Given:
+@interface MyAnnot {
+// line n1
+}
+
+Which can be added at line n1?
+A) public String name();
+B) LocalDate date();
+C) int count() = 10;
+D) Retention ret();
+E) protected String value();
+
+Q) What does a module-info identify in an export directive?
+A) classes
+B) interfaces
+C) a service
+D) a package
+E) methods
+
+Q) What does a module-info identify in a requires directive?
+A) classes
+B) interfaces
+C) a service
+D) a package
+E) a module
+
+Q) Given:
+module first {
+   exports my.stuff;
+}
+Which would allow module second to use class my.stuff.Banana
+A) module second { requires my.stuff; }
+B) module second { requires Banana; }
+C) module second { uses my.stuff.Banana; }
+D) module second { requires first; }
+E) module second { opens first; }
